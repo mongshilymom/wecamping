@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Business {
+  id          String      @id @default(cuid())
+  name        String
+  type        String      // pension, camping, cafe
+  description String?
+  settings    Json        // BusinessSettings as JSON
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  rooms       Room[]
+  reservations Reservation[]
+  
+  @@map("businesses")
+}
+
+model Room {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  capacity    Int
+  price       Float
+  images      Json     // string[]
+  amenities   Json     // string[]
+  available   Boolean  @default(true)
+  businessId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  business     Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  reservations Reservation[]
+  
+  @@map("rooms")
+}
+
+model Reservation {
+  id            String   @id @default(cuid())
+  customerName  String
+  customerPhone String
+  customerEmail String
+  checkIn       DateTime
+  checkOut      DateTime
+  guests        Int
+  totalPrice    Float
+  status        String   // pending, confirmed, cancelled
+  notes         String?
+  roomId        String
+  businessId    String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  room     Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  
+  @@map("reservations")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin") // admin, staff
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("users")
+}

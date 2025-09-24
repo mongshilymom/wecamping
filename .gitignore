@@ -1,0 +1,9 @@
+﻿# Node / Vite / React 공통
+node_modules/
+dist/
+.build/
+.cache/
+.vscode/
+.env
+.DS_Store
+*.log
