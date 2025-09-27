@@ -1,10 +1,18 @@
-﻿# Node / Vite / React 공통
+﻿# Node/JS
 node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Vercel/빌드
+.vercel/
+.vercel_cache/
 dist/
-.build/
-.cache/
-.vscode/
-.env
+build/
+public/*.map
+
+# OS/IDE
 .DS_Store
-*.log
-.next/
+Thumbs.db
+.vscode/
+.idea/
