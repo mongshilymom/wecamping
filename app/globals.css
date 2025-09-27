@@ -3,117 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #8B7355;
-  --color-secondary: #fbf8f0;
-  --color-accent: #6B5B47;
+  color: #1f1b16;
+  background-color: #f6f1e1;
 }
 
-html {
-  scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: white;
-  color: #1f2937; /* text-gray-900 */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f6f1e1;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1f2937; /* bg-gray-900 */
-    color: #f3f4f6; /* text-gray-100 */
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html.auto {
-    color-scheme: dark;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  html.auto {
-    color-scheme: light;
-  }
-}
-
-/* 컬러 클래스 */
-.business-primary {
-  color: var(--color-primary);
-}
-
-.business-bg-primary {
-  background-color: var(--color-primary);
-}
-
-.business-secondary {
-  color: var(--color-secondary);
-}
-
-.business-bg-secondary {
-  background-color: var(--color-secondary);
-}
-
-.business-accent {
-  color: var(--color-accent);
-}
-
-.business-bg-accent {
-  background-color: var(--color-accent);
-}
-
-/* 섹션 */
-.hero-section {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
-}
-
-/* 카드 호버 */
-.card-hover {
-  @apply transition-transform duration-300;
-}
-.card-hover:hover {
-  @apply scale-105 shadow-lg;
-}
-
-/* 버튼 */
-.btn-primary {
-  @apply px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300;
-  background-color: var(--color-primary);
-}
-.btn-primary:hover {
-  filter: brightness(110%);
-  transform: translateY(-2px);
-}
-
-/* 폼 입력 필드 */
-.form-input {
-  @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-opacity-50;
-}
-.form-input:focus {
-  --tw-ring-color: var(--color-primary);
-}
-
-/* 관리자 카드 */
-.admin-card {
-  @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700;
-}
-
-/* 애니메이션 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* 로딩 스피너 */
-.loading-spinner {
-  @apply inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin;
+a {
+  color: inherit;
+  text-decoration: none;
 }

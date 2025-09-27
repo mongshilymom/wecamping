@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
-import { Header } from '@/components/layout/Header'
-import { Providers } from '@/components/providers/Providers'
 import './globals.css'
 
-const notoSansKR = Noto_Sans_KR({ 
+const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700']
+  weight: ['400', '500', '700'],
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Kmong 템플릿 - 펜션/캠핑/카페',
-  description: '펜션, 캠핑장, 카페를 위한 올인원 템플릿',
+  title: 'Stay Camping',
+  description: '대자연에서 즐기는 감성 캠핑 리조트',
 }
 
 export default function RootLayout({
@@ -20,12 +19,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body className={notoSansKR.className}>
-        <Providers>
-          <Header />
-          <main>{children}</main>
-        </Providers>
+    <html lang="ko">
+      <body className={`${notoSansKR.className} bg-[#f6f1e1] text-[#1f1b16]`}>
+        {children}
       </body>
     </html>
   )
